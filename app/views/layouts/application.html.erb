@@ -9,8 +9,17 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
+  
   <body>
+    <nav>
+      <ul class="flex row js-cont-fe gap-0.5">
+        <li>Pokedex</li>
+        <li>Battle</li>
+        <li>My Pokemons</li>
+        <li>Profile</li>
+      </ul>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

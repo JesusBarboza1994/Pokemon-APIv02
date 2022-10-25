@@ -1,0 +1,25 @@
+<div id="<%= dom_id pokemon %>" >
+  <%= link_to pokemon, :action => 'go', class:"style-none" do %>
+    <div class="card" >
+  
+
+    <p >
+      <strong>Weight:</strong>
+      <%= pokemon.weight %>
+    </p>
+
+    <p>
+      <strong>Height:</strong>
+      <%= pokemon.height %>
+    </p>
+    
+    <div class="img-pok">
+        <img src='<%=pokemon.image%>' width=100% >
+    </div>
+    <p class="text"><%= pokemon.name %></p>
+  </div>
+  <% end %>
+</div>
+
+  
+  

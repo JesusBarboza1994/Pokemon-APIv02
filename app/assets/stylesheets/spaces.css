@@ -1,0 +1,103 @@
+.gap-0\.25{
+  gap: 0.25rem;
+}
+
+.gap-0\.5{
+  /* 8px */
+  gap: 0.5rem; 
+}
+
+.gap-0\.75{
+  /* 12px */
+  gap: 0.75rem;
+}
+
+.gap-1{
+  gap: 1rem;
+}
+
+.gap-1\.125{
+  /* 18px */
+  gap: 1.125rem;
+}
+
+.gap-1\.25{
+  /* 20px */
+  gap: 1.25rem;
+}
+
+.gap-1\.5{
+  /* 24px */
+  gap: 1.5rem;
+}
+
+.gap-1\.75{
+  /* 28px */
+  gap: 1.75rem;
+}
+
+.gap-1\.875{
+  /* 30px */
+  gap: 1.875rem;
+}
+
+.gap-2{
+  /* 32px */
+  gap: 2rem;
+}
+
+.gap-2\.25{
+  /* 36px */
+  gap: 1.5rem;
+}
+
+.gap-2\.5{
+  /* 40px */
+  gap: 2.5rem;
+}
+
+.gap-2\.75{
+  /* 44px */
+  gap: 2.75rem;
+}
+
+.gap-3{
+  /* 48px */
+  gap: 3rem;
+}
+
+.gap-3\.125{
+  /* 50px */
+  gap: 3.125rem;
+}
+
+.gap-3\.5{
+  /* 56px */
+  gap: 3.5rem;
+}
+
+.gap-3\.75{
+  /* 60px */
+  gap: 3.75rem;
+}
+
+.gap-4{
+  /* 64px */
+  gap: 4rem;
+}
+
+.gap-4\.375{
+  /* 70px */
+  gap: 4.375rem;
+}
+
+.gap-4\.5{
+  /* 72px */
+  gap: 4.5rem;
+}
+
+.gap-5{
+  /* 80px */
+  gap: 5rem;
+}
+

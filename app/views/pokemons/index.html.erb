@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Pokemons</h1>
+
+<div id="pokemons" class="card-container">
+  <% @pokemons.each do |pokemon| %>
+    <%= render pokemon %>
+    
+  <% end %>
+  
+</div>

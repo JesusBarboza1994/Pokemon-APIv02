@@ -1,15 +1,37 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import url("./utils.css");
+@import url("./flex.css");
+@import url("./spaces.css");
+
+.card-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+
+.img-pok{
+  width: 200px;
+  height: 200px;
+}
+
+.img{
+  width:100%
+}
+
+li{
+  list-style: none;
+}
+
+
+
+.card{
+  background-color:white;
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem rgba(128, 128, 128, 0.502);
+}
+
+.card:hover{
+  box-shadow: 0.5rem 0.5rem rgba(30, 30, 30, 0.502);
+  scale:1.05;
+  background-color:rgba(104, 199, 201, 0.27);
+}
