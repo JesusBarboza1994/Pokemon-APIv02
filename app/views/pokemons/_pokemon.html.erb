@@ -18,7 +18,9 @@
       </div>
       <div class="flex row js-cont-se">
         <% pokemon.types.each do |type|%>
-            <p><%=type.name%></p>
+            <div class = "br-rad flex tag ali-item-center js-cont-center"style="background-color:<%=type.color%>;">
+              <p><%=type.name%></p>
+            </div>
         <% end %>
       </div>
       <p class="text"><%= pokemon.name %></p>
