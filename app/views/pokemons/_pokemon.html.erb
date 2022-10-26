@@ -1,21 +1,10 @@
 <div id="<%= dom_id pokemon %>" >
   <%= link_to pokemon, :action => 'go', class:"style-none" do %>
-    <div class="card" >
-  
-
-      <p >
-        <strong>Weight:</strong>
-        <%= pokemon.weight %>
-      </p>
-
-      <p>
-        <strong>Height:</strong>
-        <%= pokemon.height %>
-      </p>
-    
+    <div class="card px-0.5 py-0.5" >
       <div class="img-pok">
           <img src='<%=pokemon.image%>' width=100% >
       </div>
+       <p class="text text-w-700 mx-0.5 my-0.5"><%= pokemon.name %></p>
       <div class="flex row js-cont-se">
         <% pokemon.types.each do |type|%>
             <div class = "br-rad flex tag ali-item-center js-cont-center"style="background-color:<%=type.color%>;">
@@ -23,7 +12,7 @@
             </div>
         <% end %>
       </div>
-      <p class="text"><%= pokemon.name %></p>
+     
     </div>
 
   <% end %>

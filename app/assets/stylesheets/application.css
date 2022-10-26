@@ -2,6 +2,7 @@
 @import url("./flex.css");
 @import url("./spaces.css");
 @import url("./button.css");
+@import url("./text.css");
 
 .card-container{
   display: flex;
@@ -12,7 +13,7 @@
 
 .img-pok{
   width: 200px;
-  height: 200px;
+  height: 170px;
 }
 
 .img{

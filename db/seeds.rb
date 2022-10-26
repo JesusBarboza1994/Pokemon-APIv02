@@ -33,7 +33,6 @@ shadow: '#7851A8'
 def pokemons_info(url)
   response = HTTParty.get(url)
   raise ResponseError, response unless response.success?
-
   JSON.parse(response.body, symbolize_names: true)
 end
 
@@ -45,11 +44,10 @@ types[:results].each do |type|
   actual_type = Type.create(name:type[:name], color: colours[type[:name].to_sym])
 end
 
-i=0
 url = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 # url = 'https://pokeapi.co/api/v2/pokemon?limit=20'
 pokemons = pokemons_info(url)
-pokemons[:results].each do |pokemon|
+pokemons[:results].each.with_index do |pokemon,i|
   url_pokemon = pokemons_info(pokemon[:url])
   # image = URI.open(url_pokemon[:sprites][:front_default])
   puts "Creating Pokemon N°#{i+1}"
@@ -59,6 +57,5 @@ pokemons[:results].each do |pokemon|
     type = Type.find_by(name:type_name[:type][:name])
     pokemon.types.push(type)
   end
-  i+=1
 end
 
