@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @indiv_stat %>
+
+<div>
+  <%= link_to "Edit this indiv stat", edit_indiv_stat_path(@indiv_stat) %> |
+  <%= link_to "Back to indiv stats", indiv_stats_path %>
+
+  <%= button_to "Destroy this indiv stat", @indiv_stat, method: :delete %>
+</div>

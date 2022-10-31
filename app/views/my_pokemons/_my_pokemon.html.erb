@@ -1,0 +1,50 @@
+<div id="<%= dom_id my_pokemon %>">
+  <p>
+    <strong>User:</strong>
+    <%= my_pokemon.user.username %>
+  </p>
+
+  <div class="card px-0.5 py-0.5" >
+      <div class="img-pok">
+          <img src='<%=my_pokemon.pokemon.image%>' width=100% >
+      </div>
+       <p class="text text-w-700 mx-0.5 my-0.5"><%= my_pokemon.pokemon.name %></p>
+      <div class="flex row js-cont-se">
+  </div>
+
+
+  <p>
+    <strong>Pokemon:</strong>
+    <%= my_pokemon.pokemon_id %>
+  </p>
+
+  <p>
+    <strong>Nickname:</strong>
+    <%= my_pokemon.nickname %>
+  </p>
+
+  <p>
+    <strong>Experience:</strong>
+    <%= my_pokemon.experience %>
+  </p>
+
+  <p>
+    <strong>Level:</strong>
+    <%= my_pokemon.level %>
+  </p>
+
+  <p>
+    <strong>HP:</strong>
+    <%= my_pokemon.real_stat[:hp] %>
+  </p>
+
+  <p>
+    <strong>HP rand:</strong>
+    <%= my_pokemon.indiv_stat[:hp] %>
+  </p>
+
+  <p>
+    <strong>Base HP:</strong>
+    <%= my_pokemon.pokemon.pokemon_stats[0][:base_stat] %>
+  </p>
+</div>

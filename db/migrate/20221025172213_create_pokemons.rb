@@ -5,6 +5,7 @@ class CreatePokemons < ActiveRecord::Migration[7.0]
       t.integer :weight
       t.integer :height
       t.string :image
+      t.integer :base_experience
 
       t.timestamps
     end

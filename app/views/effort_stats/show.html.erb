@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @effort_stat %>
+
+<div>
+  <%= link_to "Edit this effort stat", edit_effort_stat_path(@effort_stat) %> |
+  <%= link_to "Back to effort stats", effort_stats_path %>
+
+  <%= button_to "Destroy this effort stat", @effort_stat, method: :delete %>
+</div>

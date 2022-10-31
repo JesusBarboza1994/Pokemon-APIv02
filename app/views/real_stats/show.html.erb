@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @real_stat %>
+
+<div>
+  <%= link_to "Edit this real stat", edit_real_stat_path(@real_stat) %> |
+  <%= link_to "Back to real stats", real_stats_path %>
+
+  <%= button_to "Destroy this real stat", @real_stat, method: :delete %>
+</div>

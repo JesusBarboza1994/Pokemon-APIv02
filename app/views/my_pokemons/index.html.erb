@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>My pokemons</h1>
+
+<div id="my_pokemons">
+  <% @my_pokemons.sort_by{|my_pokemon| my_pokemon.user_id}.each do |my_pokemon| %>
+    <% if my_pokemon.user_id == 1 %>
+      <%= render my_pokemon %>
+      <p>
+        <%= link_to "Show this my pokemon", my_pokemon %>
+      </p>
+    <% end %>  
+  <% end %>
+</div>
+
+<%= link_to "New my pokemon", new_my_pokemon_path %>

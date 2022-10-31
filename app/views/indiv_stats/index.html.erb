@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Indiv stats</h1>
+
+<div id="indiv_stats">
+  <% @indiv_stats.each do |indiv_stat| %>
+    <%= render indiv_stat %>
+    <p>
+      <%= link_to "Show this indiv stat", indiv_stat %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New indiv stat", new_indiv_stat_path %>

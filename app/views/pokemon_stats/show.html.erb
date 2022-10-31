@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @pokemon_stat %>
+
+<div>
+  <%= link_to "Edit this pokemon stat", edit_pokemon_stat_path(@pokemon_stat) %> |
+  <%= link_to "Back to pokemon stats", pokemon_stats_path %>
+
+  <%= button_to "Destroy this pokemon stat", @pokemon_stat, method: :delete %>
+</div>

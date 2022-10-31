@@ -1,0 +1,52 @@
+<%= form_with(model: indiv_stat) do |form| %>
+  <% if indiv_stat.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(indiv_stat.errors.count, "error") %> prohibited this indiv_stat from being saved:</h2>
+
+      <ul>
+        <% indiv_stat.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :hp, style: "display: block" %>
+    <%= form.number_field :hp %>
+  </div>
+
+  <div>
+    <%= form.label :attack, style: "display: block" %>
+    <%= form.number_field :attack %>
+  </div>
+
+  <div>
+    <%= form.label :defense, style: "display: block" %>
+    <%= form.number_field :defense %>
+  </div>
+
+  <div>
+    <%= form.label :special_attack, style: "display: block" %>
+    <%= form.number_field :special_attack %>
+  </div>
+
+  <div>
+    <%= form.label :special_defense, style: "display: block" %>
+    <%= form.number_field :special_defense %>
+  </div>
+
+  <div>
+    <%= form.label :speed, style: "display: block" %>
+    <%= form.number_field :speed %>
+  </div>
+
+  <div>
+    <%= form.label :my_pokemon_id, style: "display: block" %>
+    <%= form.text_field :my_pokemon_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

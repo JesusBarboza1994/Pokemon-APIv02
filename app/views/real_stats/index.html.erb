@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Real stats</h1>
+
+<div id="real_stats">
+  <% @real_stats.each do |real_stat| %>
+    <%= render real_stat %>
+    <p>
+      <%= link_to "Show this real stat", real_stat %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New real stat", new_real_stat_path %>

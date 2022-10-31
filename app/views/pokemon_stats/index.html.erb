@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Pokemon stats</h1>
+
+<div id="pokemon_stats">
+  <% @pokemon_stats.each do |pokemon_stat| %>
+    <%= render pokemon_stat %>
+    <p>
+      <%= link_to "Show this pokemon stat", pokemon_stat %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New pokemon stat", new_pokemon_stat_path %>

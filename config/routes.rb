@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :real_stats
+  resources :effort_stats
+  resources :indiv_stats
+  resources :pokemon_stats
+  resources :stats
+  resources :my_pokemons
   resources :types
   root to:"pokemons#index"
   resources :pokemons
