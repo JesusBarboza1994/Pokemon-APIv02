@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :real_stats
   resources :effort_stats
   resources :indiv_stats
@@ -13,4 +14,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  post "/train", to: "train#index"
 end
