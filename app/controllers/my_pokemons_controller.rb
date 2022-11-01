@@ -3,8 +3,8 @@ class MyPokemonsController < ApplicationController
 
   # GET /my_pokemons
   def index
-    @my_pokemons = MyPokemon.all
-    @my_pokemons = MyPokemon.all
+    @my_pokemons = MyPokemon.where(user:current_user)
+
   end
 
   # GET /my_pokemons/1

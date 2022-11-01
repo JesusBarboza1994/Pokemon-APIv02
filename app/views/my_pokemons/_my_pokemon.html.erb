@@ -47,4 +47,10 @@
     <strong>Base HP:</strong>
     <%= my_pokemon.pokemon.pokemon_stats[0][:base_stat] %>
   </p>
+
+  <%= form_with url: "/train", method: :post do |form| %>
+    <%=form.hidden_field :my_pokemon_id, value: my_pokemon.id%>
+    <%= form.submit "Train" %>
+  <% end %>
+
 </div>
