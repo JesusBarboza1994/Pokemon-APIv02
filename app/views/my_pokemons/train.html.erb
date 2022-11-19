@@ -1,0 +1,31 @@
+
+<div class="flex col gap-5">
+  <h1>TRAIN</h1>
+  <div class= "flex row gap-5">
+    <div class="img-pok-train">
+      <img src='<%=@my_pokemon.pokemon.image%>'  >
+      <h2><%= @my_pokemon.pokemon.name%></h2>
+      <h2><%= @my_pokemon.actual_hp %>/<%= @my_pokemon.real_stat[:hp] %></h2>
+    </div>
+
+    <h1>VS</h1>
+    <div class="img-pok-train">
+      <img src='<%=@bot_pokemon.pokemon.image%>'  >
+      <h2><%= @bot_pokemon.nickname%></h2>
+      <h2><%= @bot_pokemon.actual_hp %>/<%= @bot_pokemon.real_stat[:hp] %></h2>
+    </div>
+  </div>
+
+  <div>
+    <%= form_with url: "/attack", method: :get do |form| %>
+      <%=form.hidden_field :my_pokemon_id, value: @my_pokemon.id%>
+      <%=form.hidden_field :bot_pokemon_id, value: @bot_pokemon.id%>
+      <%= form.submit "Train" %>
+    <% end %>
+  </div>
+  <div>
+    <% if @bot_pokemon.actual_hp <=0 %>
+      <h1><%= @bot_pokemon.nickname %> fainted!</h1>
+    <% end %>
+  </div>
+</div>

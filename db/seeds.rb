@@ -71,7 +71,7 @@ pokemons[:results].each.with_index do |pokemon,i|
   end
 end
 
-User.create(username:"admin", birthday:Date.today, email:"jbarz20@gmail.com", role:"admin", password: "qwerty", password_confirmation:"qwerty")
+User.create(username:"admin", birthday:Date.today, email:"admin@gmail.com", role:"admin", password: "qwerty", password_confirmation:"qwerty")
 
 4.times.each do |i|
   User.create(username:"user#{i+1}", birthday:Date.today, email:"user#{i+1}@gmail.com", role:"member", password: "qwerty", password_confirmation:"qwerty")
@@ -96,3 +96,5 @@ MyPokemon.all.each do |my_pokemon|
   end 
   RealStat.create(my_pokemon: my_pokemon, hp:stats[0], attack:stats[1], defense:stats[2], special_attack:stats[3], special_defense:stats[4], speed:stats[5])
 end
+
+User.create(username:"bot", email:"mail@mail.com", role:"member", password: "qwerty", password_confirmation:"qwerty")
