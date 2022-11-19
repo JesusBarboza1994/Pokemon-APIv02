@@ -1,6 +1,6 @@
 require 'httparty'
 require 'json'
-# This class is just for seed the db.
+
 puts "Delete Pokemons"
 Pokemon.destroy_all
 
@@ -42,21 +42,32 @@ end
 def pokemons_info(url)
   response = HTTParty.get(url)
   raise ResponseError, response unless response.success?
+
   JSON.parse(response.body, symbolize_names: true)
 end
 
-puts "Creating types"
+puts 'Creating moves'
+url_moves = 'https://pokeapi.co/api/v2/move?limit=844'
+# url_moves = 'https://pokeapi.co/api/v2/move?limit=10'
+moves = pokemons_info(url_moves)
+moves[:results].each_with_index do |move, i|
+  data_move = pokemons_info(move[:url])
+  puts "Move #{i + 1}"
+  Move.create(name:data_move[:name], tipo: data_move[:type][:name], accuracy: data_move[:accuracy], priority: data_move[:priority], power:data_move[:power], pp: data_move[:pp])
+end
+
+puts 'Creating types'
 
 url_type = 'https://pokeapi.co/api/v2/type'
 types = pokemons_info(url_type)
 types[:results].each do |type|
-  actual_type = Type.create(name:type[:name], color: colours[type[:name].to_sym])
+  Type.create(name:type[:name], color: colours[type[:name].to_sym])
 end
 
 url = 'https://pokeapi.co/api/v2/pokemon?limit=151'
-# url = 'https://pokeapi.co/api/v2/pokemon?limit=20'
+# url = 'https://pokeapi.co/api/v2/pokemon?limit=10'
 pokemons = pokemons_info(url)
-pokemons[:results].each.with_index do |pokemon,i|
+pokemons[:results].each.with_index do |pokemon, i|
   url_pokemon = pokemons_info(pokemon[:url])
   # image = URI.open(url_pokemon[:sprites][:front_default])
   puts "Creating Pokemon N°#{i+1}"
@@ -66,8 +77,14 @@ pokemons[:results].each.with_index do |pokemon,i|
     type = Type.find_by(name:type_name[:type][:name])
     pokemon.types.push(type)
   end
-  Stat.all.each.with_index do |stat,i|
-    PokemonStat.create(stat:stat, pokemon:pokemon, base_stat:url_pokemon[:stats][i][:base_stat] , effort:url_pokemon[:stats][i][:effort] )
+
+  url_pokemon[:moves].each do |move|
+    move_main = Move.find_by(name: move[:move][:name])
+    pokemon.moves.push(move_main) unless move_main.nil?
+    
+  end
+  Stat.all.each.with_index do |stat, i|
+    PokemonStat.create(stat: stat, pokemon: pokemon, base_stat:url_pokemon[:stats][i][:base_stat] , effort:url_pokemon[:stats][i][:effort] )
   end
 end
 
@@ -97,4 +114,12 @@ MyPokemon.all.each do |my_pokemon|
   RealStat.create(my_pokemon: my_pokemon, hp:stats[0], attack:stats[1], defense:stats[2], special_attack:stats[3], special_defense:stats[4], speed:stats[5])
 end
 
+
+
+Pokemon.all.each do |pokemon|
+
+end
+
+
 User.create(username:"bot", email:"mail@mail.com", role:"member", password: "qwerty", password_confirmation:"qwerty")
+

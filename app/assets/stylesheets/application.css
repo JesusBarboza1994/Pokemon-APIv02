@@ -3,6 +3,7 @@
 @import url("./spaces.css");
 @import url("./button.css");
 @import url("./text.css");
+@import url("./image-style.css");
 
 .card-container{
   display: flex;
@@ -10,23 +11,8 @@
   gap: 1rem;
 }
 
-.img-pok{
-  width: 200px;
-  height: 170px;
-}
-
-.img-pok-train{
-  width:30%;
-  height: 100%;
-}
-
 li{
   list-style: none;
-}
-
-img{
-  height:180px;
-  max-width: 180px;
 }
 
 .card{
