@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_01_010127) do
     t.string "nickname"
     t.integer "experience", default: 0
     t.integer "level", default: 1
+    t.integer "actual_hp", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pokemon_id"], name: "index_my_pokemons_on_pokemon_id"

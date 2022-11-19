@@ -120,3 +120,23 @@
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 }
+
+.py-1{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.px-1{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-1\.5{
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.px-1\.5{
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}

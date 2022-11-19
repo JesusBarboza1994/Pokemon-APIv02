@@ -71,7 +71,7 @@ pokemons[:results].each.with_index do |pokemon,i|
   end
 end
 
-User.create(username:"admin", birthday:Date.today, email:"jbarz20@gmail.com", role:"admin", password: "qwerty", password_confirmation:"qwerty")
+User.create(username:"admin", birthday:Date.today, email:"admin@gmail.com", role:"admin", password: "qwerty", password_confirmation:"qwerty")
 
 4.times.each do |i|
   User.create(username:"user#{i+1}", birthday:Date.today, email:"user#{i+1}@gmail.com", role:"member", password: "qwerty", password_confirmation:"qwerty")

@@ -6,7 +6,7 @@ class CreateMyPokemons < ActiveRecord::Migration[7.0]
       t.string :nickname
       t.integer :experience, default: 0
       t.integer :level, default: 1
-
+      t.integer :actual_hp, default: 1
       t.timestamps
     end
   end

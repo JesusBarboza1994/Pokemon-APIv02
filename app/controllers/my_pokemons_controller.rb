@@ -48,17 +48,34 @@ class MyPokemonsController < ApplicationController
 
   def train
     @my_pokemon = MyPokemon.find(params[:my_pokemon_id])
-    @pokemon = Pokemon.all.sample if @pokemon.nil?
+    @pokemon = Pokemon.all.sample 
     @bot = User.find_by(username:"bot")
     @bot_pokemon = MyPokemon.create(user:@bot, pokemon:@pokemon, 
                     nickname:@pokemon.name, experience:0, level:rand(1..(@my_pokemon.level+5)))
     create_stats(@bot_pokemon)
+    @my_pokemon.update(actual_hp: @my_pokemon.real_stat[:hp] )
+    @bot_pokemon.update(actual_hp: @bot_pokemon.real_stat[:hp] )
     @my_pokemon.prepare_for_battle
     @bot_pokemon.prepare_for_battle  
-    @my_pokemon.attack(@bot_pokemon) 
-    puts @bot_pokemon.current_hp                 
-    @bot_pokemon.train(@bot_pokemon)
+    
     render "train"
+  end
+
+  def attack
+    puts "MYPOKEMON"
+    p params
+    @my_pokemon = MyPokemon.find(params[:my_pokemon_id])
+    @bot_pokemon = MyPokemon.find(params[:bot_pokemon_id])
+    @my_pokemon.attack(@bot_pokemon) 
+    puts @bot_pokemon.actual_hp
+    if @bot_pokemon.fainted?
+      puts "muriooooooo"
+      @my_pokemon.gain_experience(@bot_pokemon)
+      render "increase_stat"
+     
+    else
+      render "train"
+    end               
   end
 
   private
