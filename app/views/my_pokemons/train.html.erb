@@ -6,13 +6,15 @@
       <img src='<%=@my_pokemon.pokemon.image%>'  >
       <h2><%= @my_pokemon.pokemon.name%></h2>
       <h2><%= @my_pokemon.actual_hp %>/<%= @my_pokemon.real_stat[:hp] %></h2>
+      <h2>Nvl. <%= @my_pokemon.level%></h2>
     </div>
-
+    
     <h1>VS</h1>
     <div class="img-pok-train">
       <img src='<%=@bot_pokemon.pokemon.image%>'  >
       <h2><%= @bot_pokemon.nickname%></h2>
       <h2><%= @bot_pokemon.actual_hp %>/<%= @bot_pokemon.real_stat[:hp] %></h2>
+      <h2>Nvl. <%= @bot_pokemon.level%></h2>
     </div>
   </div>
 
@@ -20,6 +22,7 @@
     <%= form_with url: "/attack", method: :get do |form| %>
       <%=form.hidden_field :my_pokemon_id, value: @my_pokemon.id%>
       <%=form.hidden_field :bot_pokemon_id, value: @bot_pokemon.id%>
+      <%=form.collection_select :move, @my_pokemon.pokemon.moves, :id, :name%>
       <%= form.submit "Train" %>
     <% end %>
   </div>

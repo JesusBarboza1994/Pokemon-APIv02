@@ -4,7 +4,7 @@ class MyPokemonsController < ApplicationController
   # GET /my_pokemons
   def index
     @my_pokemons = MyPokemon.where(user:current_user)
-
+    puts current_user
   end
 
   # GET /my_pokemons/1
@@ -23,8 +23,10 @@ class MyPokemonsController < ApplicationController
   # POST /my_pokemons
   def create
     @my_pokemon = MyPokemon.new(my_pokemon_params)
-    create_stats(@my_pokemon)
+    puts @my_pokemon.user
+    @my_pokemon.user = current_user
     if @my_pokemon.save
+      create_stats(@my_pokemon)
       redirect_to @my_pokemon, notice: "My pokemon was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -55,8 +57,6 @@ class MyPokemonsController < ApplicationController
     create_stats(@bot_pokemon)
     @my_pokemon.update(actual_hp: @my_pokemon.real_stat[:hp] )
     @bot_pokemon.update(actual_hp: @bot_pokemon.real_stat[:hp] )
-    @my_pokemon.prepare_for_battle
-    @bot_pokemon.prepare_for_battle  
     
     render "train"
   end
@@ -66,13 +66,21 @@ class MyPokemonsController < ApplicationController
     p params
     @my_pokemon = MyPokemon.find(params[:my_pokemon_id])
     @bot_pokemon = MyPokemon.find(params[:bot_pokemon_id])
-    @my_pokemon.attack(@bot_pokemon) 
-    puts @bot_pokemon.actual_hp
+    @bot_move = @bot_pokemon.pokemon.moves.all.sample
+    @my_pokemon_move = Move.find(params[:move])
+    players = attack_order(@my_pokemon, @bot_pokemon, @my_pokemon_move, @bot_move)
+    first = players[0]
+    second = players[1]
+    
+
     if @bot_pokemon.fainted?
       puts "muriooooooo"
-      @my_pokemon.gain_experience(@bot_pokemon)
+      @level_up = @my_pokemon.gain_experience(@bot_pokemon)
       render "increase_stat"
      
+    elsif @my_pokemon.fainted?
+      puts "perdiste"
+      render "increase_stat"
     else
       render "train"
     end               
@@ -104,5 +112,30 @@ class MyPokemonsController < ApplicationController
         end
       end 
       RealStat.create(my_pokemon: my_pokemon, hp:stats[0], attack:stats[1], defense:stats[2], special_attack:stats[3], special_defense:stats[4], speed:stats[5])
+    end
+
+    def select_first_attack(player, bot, move_player, move_bot)
+      if move_player[:priority] > move_bot[:priority] 
+        player
+      elsif move_player[:priority] < move_bot[:priority]
+        bot
+      elsif player.real_stat[:speed] > bot.real_stat[:speed]
+        player
+      elsif player.real_stat[:speed] < bot.real_stat[:speed]
+        bot
+      else
+        rand(2).zero? ? player : bot
+      end
+    end
+
+    def attack_order(player, bot,move_player, move_bot)
+      first = select_first_attack(player, bot,move_player, move_bot)
+      second = first == player ? bot : player
+      first_move = first == player ? move_player : move_bot
+      second_move = first == player ? move_bot : move_player
+
+      first.attack(second,first_move) unless first.fainted?
+      second.attack(first, second_move) unless second.fainted?
+      [first, second]
     end
 end

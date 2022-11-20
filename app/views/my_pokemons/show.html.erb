@@ -2,6 +2,27 @@
 
 <%= render @my_pokemon %>
 
+<p>
+  <strong>Attack:</strong>
+  <%= @my_pokemon.real_stat[:attack] %>
+</p>
+<p>
+  <strong>Defenser:</strong>
+  <%= @my_pokemon.real_stat[:defense] %>
+</p>
+<p>
+  <strong>Special Attack:</strong>
+  <%= @my_pokemon.real_stat[:special_attack] %>
+</p>
+<p>
+  <strong>Special Defense:</strong>
+  <%= @my_pokemon.real_stat[:special_defense] %>
+</p>
+<p>
+  <strong>Speed:</strong>
+  <%= @my_pokemon.real_stat[:speed] %>
+</p>
+
 <div>
   <%= link_to "Edit this my pokemon", edit_my_pokemon_path(@my_pokemon) %> |
   <%= link_to "Back to my pokemons", my_pokemons_path %>

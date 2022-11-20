@@ -8,24 +8,17 @@ class MyPokemon < ApplicationRecord
   has_one :indiv_stat, dependent: :destroy
   has_one :effort_stat, dependent: :destroy
 
-  def prepare_for_battle
-    
-    # @current_hp = self.real_stat[:hp]
-    @current_attack = self.real_stat[:attack]
-    @current_defense = self.real_stat[:defense]
-    @current_special_attack = self.real_stat[:special_attack]
-    @current_special_defense = self.real_stat[:special_defense]
-    @current_speed = self.real_stat[:speed]
-    @attack_points = 1
-  end
 
-  def attack(pokemon)
+  def attack(pokemon, move)
+    puts "==="
+    p move.power
+    puts "==="
     puts "HP inicial"
     puts pokemon.actual_hp
-    pokemon.actual_hp -= 5
+    puts move.power
+    pokemon.actual_hp -= move.power unless move.power.nil?
+    
     pokemon.update(actual_hp:pokemon.actual_hp )
-    # if pokemon.actual_hp <= 0
-
     puts "HP final"
     puts pokemon.actual_hp
   end
@@ -34,22 +27,28 @@ class MyPokemon < ApplicationRecord
   end
 
   def gain_experience(pokemon)
-    amount_stats = pokemon.effort_points[:amount]
+    levels = [self.level]
+    # amount_stats = pokemon.effort_points[:amount]
     gained_points = (self.pokemon.base_experience * pokemon.level / 7.0).floor
     actual_exp = self.experience
     self.update(experience: actual_exp + gained_points)
     exp = ((6 / 5 * ((self.level+1)**3)) - (15 * ((self.level+1)**2)) + (100 * (self.level+1)) - 140).floor
-    if self.experience >= exp
-      self.update(level: self.level + 1)
-    end
-    puts "antes tenia experiencia:"
-    puts actual_exp
-    puts "gano puntos"
-    puts gained_points
-    puts "puntos necesarios para subir"
-    puts exp
-    puts "nivel que ahora tiene:"
-    puts self.level
 
+    while self.experience > exp
+      self.update(level: self.level + 1) if self.experience >= exp
+      exp = ((6 / 5 * ((self.level+1)**3)) - (15 * ((self.level+1)**2)) + (100 * (self.level+1)) - 140).floor
+    end
+    self.pokemon.stats.each.with_index do |stat,i|      
+      calc_stats = (2 * self.pokemon.pokemon_stats[i][:base_stat]) + self.indiv_stat[stat[:name]] + (self.effort_stat[stat[:name]] / 4).floor
+      base_for_st =  calc_stats * self.level / 100
+      puts base_for_st
+      if self.pokemon.stats[i][:name] == "hp"
+        self.real_stat.update(self.pokemon.stats[i][:name]=>(base_for_st + self.level + 10).floor)
+      else
+        self.real_stat.update(self.pokemon.stats[i][:name]=>(base_for_st + 5).floor)
+      end
+    end
+    levels.push(self.level)
+    return levels
   end
 end

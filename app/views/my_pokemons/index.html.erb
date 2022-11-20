@@ -1,7 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>My pokemons</h1>
-
+<%= link_to "New my pokemon", new_my_pokemon_path %>
 <div id="my_pokemons">
   <% @my_pokemons.each do |my_pokemon| %>
     <%= render my_pokemon %>
@@ -11,4 +11,4 @@
   <% end %>
 </div>
 
-<%= link_to "New my pokemon", new_my_pokemon_path %>
+

@@ -1,1 +1,11 @@
-<h1><%= @my_pokemon.nickname%></h1>
+<h1><%= @my_pokemon.actual_hp%></h1>
+<% if @my_pokemon.actual_hp <= 0 %>
+<h1>PERDISTE!!</h1>
+<% else %>
+<h1>GANASTE</h1>
+  <% @level_up[0] += 1%>
+  <% while @level_up[0]<=@level_up[1]%>
+    <h1>Subiste al Nivel <%=@level_up[0]%>!</h1>
+    <% @level_up[0] += 1%>
+  <%end%>
+<% end %>
