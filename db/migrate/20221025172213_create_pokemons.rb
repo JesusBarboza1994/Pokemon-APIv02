@@ -6,6 +6,7 @@ class CreatePokemons < ActiveRecord::Migration[7.0]
       t.integer :height
       t.string :image
       t.integer :base_experience
+      # t.references :move, null: true, foreign_key: true
 
       t.timestamps
     end

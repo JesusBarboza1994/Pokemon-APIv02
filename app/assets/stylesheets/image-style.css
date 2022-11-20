@@ -1,0 +1,16 @@
+.img-pok{
+  width: 200px;
+  height: 200px;
+  background-size: 100% 100%;
+}
+
+.img-pok-train{
+  width:30%;
+  height: 100%;
+}
+
+
+img{
+  height:180px;
+  max-width: 180px;
+}

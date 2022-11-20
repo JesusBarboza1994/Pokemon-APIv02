@@ -6,4 +6,5 @@ class Pokemon < ApplicationRecord
 
   has_many :pokemon_stats, dependent: :destroy
   has_many :stats, through: :pokemon_stats
+  has_and_belongs_to_many :moves
 end

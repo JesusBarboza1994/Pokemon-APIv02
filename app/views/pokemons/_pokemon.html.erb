@@ -1,8 +1,7 @@
 <div id="<%= dom_id pokemon %>" >
   <%= link_to pokemon, :action => 'go', class:"style-none" do %>
     <div class="gap-1.25 card px-0.5 py-1.5 ali-item-center" >
-      <div class="img-pok flex js-cont-center" >
-        <img src='<%=pokemon.image%>'>
+      <div class="img-pok flex js-cont-center" style="background-image:url(<%= pokemon.image%>)" >
       </div>  
       <p class="text text-w-700 mx-0.5 my-0.5"><%= pokemon.name %></p>
       <div class="flex row gap-3">
