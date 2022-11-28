@@ -1,51 +1,33 @@
-<div id="<%= dom_id my_pokemon %>">
+<div id="<%= dom_id my_pokemon %>" class="card-mypokemon">
   <p>
-    <strong>User:</strong>
-    <%= my_pokemon.user.username %>
+    <%= link_to "Show this my pokemon", my_pokemon %>
   </p>
 
   <div class="px-0.5 py-0.5" >
-      <div class="img-pok">
-          <img src='<%=my_pokemon.pokemon.image%>' width=100% >
-      </div>
-       <p class="text text-w-700 mx-0.5 my-0.5"><%= my_pokemon.pokemon.name %></p>
-      <div class="flex row js-cont-se">
+    <div class="img-pok">
+      <img src='<%=my_pokemon.pokemon.image%>' width=100% >
+    </div>
+    <p class="text text-w-700 mx-0.5 my-0.5"><%= my_pokemon.pokemon.name %></p>
+      
   </div>
-
-
   <p>
-    <strong>Pokemon:</strong>
-    <%= my_pokemon.pokemon_id %>
+    <strong>N° Pokemon:</strong><%= my_pokemon.pokemon_id %>
   </p>
 
   <p>
-    <strong>Nickname:</strong>
-    <%= my_pokemon.nickname %>
+    <strong>Nickname:</strong><%= my_pokemon.nickname %>
   </p>
 
   <p>
-    <strong>Experience:</strong>
-    <%= my_pokemon.experience %>
+    <strong>Experience:</strong><%= my_pokemon.experience %>
   </p>
 
   <p>
-    <strong>Level:</strong>
-    <%= my_pokemon.level %>
+    <strong>Level:</strong><%= my_pokemon.level %>
   </p>
 
   <p>
-    <strong>HP:</strong>
-    <%= my_pokemon.real_stat[:hp] %>
-  </p>
-
-  <p>
-    <strong>HP rand:</strong>
-    <%= my_pokemon.indiv_stat[:hp] %>
-  </p> 
-
-  <p>
-    <strong>Base HP:</strong>
-    <%= my_pokemon.pokemon.pokemon_stats[0][:base_stat] %>
+    <strong>HP:</strong><%= my_pokemon.real_stat[:hp] %>
   </p>
 
   <%= form_with url: "/train", method: :get do |form| %>

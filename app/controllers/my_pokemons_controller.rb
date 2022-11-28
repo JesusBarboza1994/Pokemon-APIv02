@@ -62,8 +62,6 @@ class MyPokemonsController < ApplicationController
   end
 
   def attack
-    puts "MYPOKEMON"
-    p params
     @my_pokemon = MyPokemon.find(params[:my_pokemon_id])
     @bot_pokemon = MyPokemon.find(params[:bot_pokemon_id])
     @bot_move = @bot_pokemon.pokemon.moves.all.sample
@@ -71,19 +69,16 @@ class MyPokemonsController < ApplicationController
     players = attack_order(@my_pokemon, @bot_pokemon, @my_pokemon_move, @bot_move)
     first = players[0]
     second = players[1]
-    
-
     if @bot_pokemon.fainted?
       puts "muriooooooo"
       @level_up = @my_pokemon.gain_experience(@bot_pokemon)
       render "increase_stat"
-     
     elsif @my_pokemon.fainted?
       puts "perdiste"
       render "increase_stat"
     else
       render "train"
-    end               
+    end
   end
 
   private

@@ -4,30 +4,8 @@
 @import url("./button.css");
 @import url("./text.css");
 @import url("./image-style.css");
-
-.card-container{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
+@import url("./card.css");
 
 li{
   list-style: none;
-}
-
-.card{
-  display: flex;
-  flex-direction: column;
-  height:300px;
-  width:300px;
-  background-color:white;
-  border-radius: 1rem;
-  box-shadow: 0.5rem 0.5rem rgba(128, 128, 128, 0.502);
-
-}
-
-.card:hover{
-  box-shadow: 0.5rem 0.5rem rgba(30, 30, 30, 0.502);
-  scale:1.05;
-  /* background-color:rgba(104, 199, 201, 0.27); */
 }

@@ -2,12 +2,13 @@
 
 <h1>My pokemons</h1>
 <%= link_to "New my pokemon", new_my_pokemon_path %>
-<div id="my_pokemons">
+<p>
+  <strong>User:</strong><%= current_user.username %>
+</p>
+<div id="my_pokemons" class="flex wrap js-cont-sb gap-3">
   <% @my_pokemons.each do |my_pokemon| %>
     <%= render my_pokemon %>
-    <p>
-      <%= link_to "Show this my pokemon", my_pokemon %>
-    </p>
+    
   <% end %>
 </div>
 

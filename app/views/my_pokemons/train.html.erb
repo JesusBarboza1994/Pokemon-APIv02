@@ -7,6 +7,7 @@
       <h2><%= @my_pokemon.pokemon.name%></h2>
       <h2><%= @my_pokemon.actual_hp %>/<%= @my_pokemon.real_stat[:hp] %></h2>
       <h2>Nvl. <%= @my_pokemon.level%></h2>
+      <progress value="<%= @my_pokemon.actual_hp %>" max="<%= @my_pokemon.real_stat[:hp] %>"></progress>
     </div>
     
     <h1>VS</h1>
